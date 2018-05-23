@@ -1,0 +1,58 @@
+﻿@model RelojChecador.Models.HorarioModel
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Horario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.txtGrupo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.txtGrupo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.txtMateria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.txtMateria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.txtProfesor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.txtProfesor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.txtHoraClase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.txtHoraClase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diasSemana)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diasSemana)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idHorario }) |
+    @Html.ActionLink("Regresar al listado", "Index")
+</p>

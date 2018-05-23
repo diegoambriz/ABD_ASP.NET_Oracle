@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Administración";
+}
+
+<h2>Administración</h2>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <div class="row">
+            <a href="@Url.Action("Index", "Profesores")" class="col-xs-12 btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                Profesores
+            </a>
+        </div>
+        <div class="row">
+            <a href="@Url.Action("Index", "Materias")" class="col-xs-12 btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                Materias
+            </a>
+        </div>
+        <div class="row">
+            <a href="@Url.Action("Index", "Grupos")" class="col-xs-12 btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                Grupos
+            </a>
+        </div>
+        <div class="row">
+            <a href="@Url.Action("Index", "HorasClase")" class="col-xs-12 btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+                Horas-Clase
+            </a>
+        </div>
+        <div class="row">
+            <a href="@Url.Action("Index", "Horarios")" class="col-xs-12 btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                Horarios
+            </a>
+        </div>
+    </div>
+</div>

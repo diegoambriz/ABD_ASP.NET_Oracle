@@ -1,0 +1,39 @@
+﻿@model RelojChecador.Models.HORA_CLASE
+
+@{
+    ViewBag.Title = "Borrar";
+}
+
+<h2>Borrar</h2>
+
+<h3>¿Está seguro que desea borrar la hora-clase?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HORA_INICIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HORA_INICIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HORA_FIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HORA_FIN)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar al listado", "Index")
+        </div>
+    }
+</div>

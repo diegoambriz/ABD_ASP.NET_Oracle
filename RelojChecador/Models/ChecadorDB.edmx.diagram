@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aca7a52bb11448f88f71ae9dc91d1736" Name="Diagram1">
+        <EntityTypeShape EntityType="ChecadorModel.GRUPO" PointX="0.75" PointY="7.875" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecadorModel.HORA_CLASE" PointX="3.375" PointY="8.875" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecadorModel.HORARIO" PointX="3" PointY="2.75" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecadorModel.MATERIA" PointX="8.375" PointY="6.875" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecadorModel.PROFESOR" PointX="0.75" PointY="2.25" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecadorModel.REGISTRO_ASISTENCIA" PointX="5.25" PointY="3.125" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecadorModel.RETARDO" PointX="7.5" PointY="3.375" Width="1.5" IsExpanded="true" />
+        <AssociationConnector ManuallyRouted="false" Association="ChecadorModel.HORARIO_FK2" />
+        <AssociationConnector ManuallyRouted="false" Association="ChecadorModel.HORARIO_FK" />
+        <AssociationConnector ManuallyRouted="false" Association="ChecadorModel.HORARIO_FK3" />
+        <AssociationConnector ManuallyRouted="false" Association="ChecadorModel.HORARIO_FK4" />
+        <AssociationConnector ManuallyRouted="false" Association="ChecadorModel.REGISTRO_ASISTENCIA_FK" />
+        <AssociationConnector ManuallyRouted="false" Association="ChecadorModel.RETARDO_FK" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

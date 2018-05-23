@@ -1,0 +1,62 @@
+﻿@model IEnumerable<RelojChecador.Models.MATERIA>
+
+@{
+    ViewBag.Title = "Administración de Materias";
+}
+
+<h2>Administración de Materias</h2>
+
+<a href="@Url.Action("Create", "Materias")" class="btn btn-success">
+    Crear Nueva
+    <span class="glyphicon glyphicon-plus"></span>
+</a>
+<!--<p>
+    @Html.ActionLink("Crear Nueva", "Create")
+</p>-->
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NUM_HORAS_CLASE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEMESTRE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NUM_HORAS_CLASE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEMESTRE)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Materias", new { id=item.ID_MATERIA })" class="btn btn-warning btn-xs">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <a href="@Url.Action("Details", "Materias", new { id=item.ID_MATERIA })" class="btn btn-info btn-xs">
+                <span class="glyphicon glyphicon-th-list"></span>
+            </a>
+            <a href="@Url.Action("Delete", "Materias", new { id = item.ID_MATERIA })" class="btn btn-danger btn-xs">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+            @*@Html.ActionLink("Editar", "Edit", new { id=item.ID_MATERIA }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_MATERIA }) |
+            @Html.ActionLink("Borrar", "Delete", new { id = item.ID_MATERIA })*@
+        </td>
+    </tr>
+}
+
+</table>
+<a href="@Url.Action("Index", "Administracion")" class="btn btn-default">
+    <span class="glyphicon glyphicon-hand-left" aria_hidden="true"></span>
+    Administración
+</a>

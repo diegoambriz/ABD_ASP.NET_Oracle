@@ -1,0 +1,47 @@
+﻿@model RelojChecador.Models.GRUPO
+
+@{
+    ViewBag.Title = "Borrar";
+}
+
+<h2>Borrar</h2>
+
+<h3>¿Está seguro que desea borrar el grupo?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CICLO_ESCOLAR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CICLO_ESCOLAR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEMESTRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEMESTRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GRUPO1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GRUPO1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar al listado", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,114 @@
+﻿@model RelojChecador.Models.PROFESOR
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>PROFESOR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDO1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDO1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDO2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDO2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CALLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CALLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NO_EXTERIOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NO_EXTERIOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NO_INTERIOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NO_INTERIOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LADA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LADA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_NACIMIENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_NACIMIENTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RFC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RFC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FIRMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FIRMA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_PROFESOR }) |
+    @Html.ActionLink("Regresar al listado", "Index")
+</p>

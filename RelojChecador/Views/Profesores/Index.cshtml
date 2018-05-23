@@ -1,0 +1,122 @@
+﻿@model IEnumerable<RelojChecador.Models.PROFESOR>
+
+@{
+    ViewBag.Title = "Administración de Profesores";
+}
+
+<h2>Administración de Profesores</h2>
+
+<!--<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>-->
+<a href="@Url.Action("Create", "Profesores")" class="btn btn-success">
+    Crear Nuevo
+    <span class="glyphicon glyphicon-plus"></span>
+</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APELLIDO1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APELLIDO2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CALLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NO_EXTERIOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NO_INTERIOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LADA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_NACIMIENTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RFC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIRMA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HORAS_SEMANALES)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APELLIDO1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APELLIDO2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CALLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NO_EXTERIOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NO_INTERIOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LADA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_NACIMIENTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RFC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIRMA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HORAS_SEMANALES)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Profesores", new { id=item.ID_PROFESOR })" class="btn btn-warning btn-xs">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <a href="@Url.Action("Details", "Profesores", new { id=item.ID_PROFESOR })" class="btn btn-info btn-xs">
+                <span class="glyphicon glyphicon-th-list"></span>
+            </a>
+            <a href="@Url.Action("Delete", "Profesores", new { id = item.ID_PROFESOR })" class="btn btn-danger btn-xs">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+            @*@Html.ActionLink("Editar", "Edit", new { id=item.ID_PROFESOR }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_PROFESOR }) |
+            @Html.ActionLink("Borrar", "Delete", new { id = item.ID_PROFESOR })*@
+        </td>
+    </tr>
+}
+
+</table>
+<a href="@Url.Action("Index", "Administracion")" class="btn btn-default">
+    <span class="glyphicon glyphicon-hand-left" aria_hidden="true"></span>
+    Administración
+</a>

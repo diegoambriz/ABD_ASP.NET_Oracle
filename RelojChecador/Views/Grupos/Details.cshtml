@@ -1,0 +1,42 @@
+﻿@model RelojChecador.Models.GRUPO
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>GRUPO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CICLO_ESCOLAR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CICLO_ESCOLAR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEMESTRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEMESTRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GRUPO1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GRUPO1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_GRUPO }) |
+    @Html.ActionLink("Regresar al listado", "Index")
+</p>

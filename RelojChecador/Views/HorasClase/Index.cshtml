@@ -1,0 +1,56 @@
+﻿@model IEnumerable<RelojChecador.Models.HORA_CLASE>
+
+@{
+    ViewBag.Title = "Administración de Horas-Clase";
+}
+
+<h2>Administración de Horas-Clase</h2>
+
+<!--<p>
+    @Html.ActionLink("Crear Nueva", "Create")
+</p>-->
+<a href="@Url.Action("Create", "HorasClase")" class="btn btn-success">
+    Crear Nueva
+    <span class="glyphicon glyphicon-plus"></span>
+</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HORA_INICIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HORA_FIN)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HORA_INICIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HORA_FIN)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "HorasClase", new { id=item.ID_HORA_CLASE })" class="btn btn-warning btn-xs">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <a href="@Url.Action("Details", "HorasClase", new { id=item.ID_HORA_CLASE })" class="btn btn-info btn-xs">
+                <span class="glyphicon glyphicon-th-list"></span>
+            </a>
+            <a href="@Url.Action("Delete", "HorasClase", new { id = item.ID_HORA_CLASE})" class="btn btn-danger btn-xs">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+            @*@Html.ActionLink("Editar", "Edit", new { id=item.ID_HORA_CLASE }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_HORA_CLASE }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.ID_HORA_CLASE })*@
+        </td>
+    </tr>
+}
+
+</table>
+<a href="@Url.Action("Index", "Administracion")" class="btn btn-default">
+    <span class="glyphicon glyphicon-hand-left" aria_hidden="true"></span>
+    Administración
+</a>

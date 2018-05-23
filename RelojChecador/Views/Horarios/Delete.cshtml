@@ -1,0 +1,63 @@
+﻿@model RelojChecador.Models.HorarioModel
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Está seguro que desea eliminar el horario?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.txtGrupo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.txtGrupo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.txtMateria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.txtMateria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.txtProfesor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.txtProfesor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.txtHoraClase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.txtHoraClase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diasSemana)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diasSemana)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar al listado", "Index")
+        </div>
+    }
+</div>

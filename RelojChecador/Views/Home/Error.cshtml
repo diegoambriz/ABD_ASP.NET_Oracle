@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "No se puede eliminar";
+}
+
+<h2>Validación de eliminación</h2>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        No se puede realizar la eliminación el objeto está siendo usado en otra tabla.
+    </div>
+</div>
+<a href="@Url.Action("Index", "Administracion")" class="btn btn-default">
+    <span class="glyphicon glyphicon-hand-left" aria_hidden="true"></span>
+    Administración
+</a>

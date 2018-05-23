@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ChecadorModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GRUPO">
+          <Key>
+            <PropertyRef Name="ID_GRUPO" />
+          </Key>
+          <Property Name="ID_GRUPO" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CICLO_ESCOLAR" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="SEMESTRE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="GRUPO" Type="varchar2" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HORA_CLASE">
+          <Key>
+            <PropertyRef Name="ID_HORA_CLASE" />
+          </Key>
+          <Property Name="ID_HORA_CLASE" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="HORA_INICIO" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="HORA_FIN" Type="timestamp" Precision="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HORARIO">
+          <Key>
+            <PropertyRef Name="ID_HORARIO" />
+          </Key>
+          <Property Name="ID_HORARIO" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID_HORA_CLASE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_GRUPO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_MATERIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PROFESOR" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DIA_SEMANA" Type="varchar2" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MATERIA">
+          <Key>
+            <PropertyRef Name="ID_MATERIA" />
+          </Key>
+          <Property Name="ID_MATERIA" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="NUM_HORAS_CLASE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SEMESTRE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROFESOR">
+          <Key>
+            <PropertyRef Name="ID_PROFESOR" />
+          </Key>
+          <Property Name="ID_PROFESOR" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE1" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE2" Type="varchar2" MaxLength="50" />
+          <Property Name="APELLIDO1" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDO2" Type="varchar2" MaxLength="50" />
+          <Property Name="CALLE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="NO_EXTERIOR" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="NO_INTERIOR" Type="varchar2" MaxLength="10" />
+          <Property Name="LADA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TELEFONO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_NACIMIENTO" Type="date" Nullable="false" />
+          <Property Name="RFC" Type="varchar2" MaxLength="13" Nullable="false" />
+          <Property Name="HORAS_SEMANALES" Type="number" Precision="38" Scale="0" />
+          <Property Name="FIRMA" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REGISTRO_ASISTENCIA">
+          <Key>
+            <PropertyRef Name="ID_REGISTRO_ASISTENCIA" />
+          </Key>
+          <Property Name="ID_REGISTRO_ASISTENCIA" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID_HORARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="HORA" Type="timestamp" Precision="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RETARDO">
+          <Key>
+            <PropertyRef Name="ID_RETARDO" />
+          </Key>
+          <Property Name="ID_RETARDO" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID_REGISTRO_ASISTENCIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DURACION" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="HORARIO_FK">
+          <End Role="HORA_CLASE" Type="Self.HORA_CLASE" Multiplicity="1" />
+          <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HORA_CLASE">
+              <PropertyRef Name="ID_HORA_CLASE" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="ID_HORA_CLASE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HORARIO_FK2">
+          <End Role="GRUPO" Type="Self.GRUPO" Multiplicity="1" />
+          <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRUPO">
+              <PropertyRef Name="ID_GRUPO" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="ID_GRUPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HORARIO_FK3">
+          <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="1" />
+          <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIA">
+              <PropertyRef Name="ID_MATERIA" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="ID_MATERIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HORARIO_FK4">
+          <End Role="PROFESOR" Type="Self.PROFESOR" Multiplicity="1" />
+          <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESOR">
+              <PropertyRef Name="ID_PROFESOR" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="ID_PROFESOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGISTRO_ASISTENCIA_FK">
+          <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="1" />
+          <End Role="REGISTRO_ASISTENCIA" Type="Self.REGISTRO_ASISTENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HORARIO">
+              <PropertyRef Name="ID_HORARIO" />
+            </Principal>
+            <Dependent Role="REGISTRO_ASISTENCIA">
+              <PropertyRef Name="ID_HORARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RETARDO_FK">
+          <End Role="REGISTRO_ASISTENCIA" Type="Self.REGISTRO_ASISTENCIA" Multiplicity="1" />
+          <End Role="RETARDO" Type="Self.RETARDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGISTRO_ASISTENCIA">
+              <PropertyRef Name="ID_REGISTRO_ASISTENCIA" />
+            </Principal>
+            <Dependent Role="RETARDO">
+              <PropertyRef Name="ID_REGISTRO_ASISTENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CALCULOINSERCIONRETARDO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHECADOR">
+          <Parameter Name="P_IDHORARIO" Type="number" Mode="In" />
+          <Parameter Name="P_IDREGISTROASISTENCIA" Type="number" Mode="In" />
+          <Parameter Name="P_HORA" Type="timestamp" Mode="In" />
+        </Function>
+        <Function Name="CALCULOPAGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHECADOR">
+          <Parameter Name="P_IDPROFESOR" Type="number" Mode="In" />
+          <Parameter Name="P_IDPAGO" Type="number" Mode="In" />
+          <Parameter Name="P_FECHAINICIO" Type="date" Mode="In" />
+          <Parameter Name="P_FECHAFIN" Type="date" Mode="In" />
+        </Function>
+        <Function Name="DECHORASPROFESOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHECADOR">
+          <Parameter Name="P_IDPROFESOR" Type="number" Mode="In" />
+          <Parameter Name="P_DIASSEMANA" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="INCDECHORASPROFESOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHECADOR">
+          <Parameter Name="P_IDPROFESOR" Type="number" Mode="In" />
+          <Parameter Name="P_DSEMANANEW" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DSEMANAANT" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="INCREMENTOHORASPROFESOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHECADOR">
+          <Parameter Name="P_IDPROFESOR" Type="number" Mode="In" />
+          <Parameter Name="P_DIASSEMANA" Type="varchar2" Mode="In" />
+        </Function>
+        <EntityContainer Name="ChecadorModelStoreContainer">
+          <EntitySet Name="GRUPO" EntityType="Self.GRUPO" Schema="CHECADOR" store:Type="Tables" />
+          <EntitySet Name="HORA_CLASE" EntityType="Self.HORA_CLASE" Schema="CHECADOR" store:Type="Tables" />
+          <EntitySet Name="HORARIO" EntityType="Self.HORARIO" Schema="CHECADOR" store:Type="Tables" />
+          <EntitySet Name="MATERIA" EntityType="Self.MATERIA" Schema="CHECADOR" store:Type="Tables" />
+          <EntitySet Name="PROFESOR" EntityType="Self.PROFESOR" Schema="CHECADOR" store:Type="Tables" />
+          <EntitySet Name="REGISTRO_ASISTENCIA" EntityType="Self.REGISTRO_ASISTENCIA" Schema="CHECADOR" store:Type="Tables" />
+          <EntitySet Name="RETARDO" EntityType="Self.RETARDO" Schema="CHECADOR" store:Type="Tables" />
+          <AssociationSet Name="HORARIO_FK" Association="Self.HORARIO_FK">
+            <End Role="HORA_CLASE" EntitySet="HORA_CLASE" />
+            <End Role="HORARIO" EntitySet="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="HORARIO_FK2" Association="Self.HORARIO_FK2">
+            <End Role="GRUPO" EntitySet="GRUPO" />
+            <End Role="HORARIO" EntitySet="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="HORARIO_FK3" Association="Self.HORARIO_FK3">
+            <End Role="MATERIA" EntitySet="MATERIA" />
+            <End Role="HORARIO" EntitySet="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="HORARIO_FK4" Association="Self.HORARIO_FK4">
+            <End Role="PROFESOR" EntitySet="PROFESOR" />
+            <End Role="HORARIO" EntitySet="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="REGISTRO_ASISTENCIA_FK" Association="Self.REGISTRO_ASISTENCIA_FK">
+            <End Role="HORARIO" EntitySet="HORARIO" />
+            <End Role="REGISTRO_ASISTENCIA" EntitySet="REGISTRO_ASISTENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="RETARDO_FK" Association="Self.RETARDO_FK">
+            <End Role="REGISTRO_ASISTENCIA" EntitySet="REGISTRO_ASISTENCIA" />
+            <End Role="RETARDO" EntitySet="RETARDO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ChecadorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GRUPO">
+          <Key>
+            <PropertyRef Name="ID_GRUPO" />
+          </Key>
+          <Property Name="ID_GRUPO" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="CICLO_ESCOLAR" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="SEMESTRE" Nullable="false" Type="Int32" />
+          <Property Name="GRUPO1" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <NavigationProperty Name="HORARIO" Relationship="Self.HORARIO_FK2" FromRole="GRUPO" ToRole="HORARIO" />
+        </EntityType>
+        <EntityType Name="HORA_CLASE">
+          <Key>
+            <PropertyRef Name="ID_HORA_CLASE" />
+          </Key>
+          <Property Name="ID_HORA_CLASE" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="HORA_INICIO" Nullable="false" Precision="6" Type="DateTime" />
+          <Property Name="HORA_FIN" Nullable="false" Precision="6" Type="DateTime" />
+          <NavigationProperty Name="HORARIO" Relationship="Self.HORARIO_FK" FromRole="HORA_CLASE" ToRole="HORARIO" />
+        </EntityType>
+        <EntityType Name="HORARIO">
+          <Key>
+            <PropertyRef Name="ID_HORARIO" />
+          </Key>
+          <Property Name="ID_HORARIO" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="ID_HORA_CLASE" Nullable="false" Type="Int64" />
+          <Property Name="ID_GRUPO" Nullable="false" Type="Int64" />
+          <Property Name="ID_MATERIA" Nullable="false" Type="Int64" />
+          <Property Name="ID_PROFESOR" Nullable="false" Type="Int64" />
+          <Property Name="DIA_SEMANA" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" Type="String" />
+          <NavigationProperty Name="GRUPO" Relationship="Self.HORARIO_FK2" FromRole="HORARIO" ToRole="GRUPO" />
+          <NavigationProperty Name="HORA_CLASE" Relationship="Self.HORARIO_FK" FromRole="HORARIO" ToRole="HORA_CLASE" />
+          <NavigationProperty Name="MATERIA" Relationship="Self.HORARIO_FK3" FromRole="HORARIO" ToRole="MATERIA" />
+          <NavigationProperty Name="PROFESOR" Relationship="Self.HORARIO_FK4" FromRole="HORARIO" ToRole="PROFESOR" />
+          <NavigationProperty Name="REGISTRO_ASISTENCIA" Relationship="Self.REGISTRO_ASISTENCIA_FK" FromRole="HORARIO" ToRole="REGISTRO_ASISTENCIA" />
+        </EntityType>
+        <EntityType Name="MATERIA">
+          <Key>
+            <PropertyRef Name="ID_MATERIA" />
+          </Key>
+          <Property Name="ID_MATERIA" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="NOMBRE" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="NUM_HORAS_CLASE" Nullable="false" Type="Int32" />
+          <Property Name="SEMESTRE" Nullable="false" Type="Int32" />
+          <NavigationProperty Name="HORARIO" Relationship="Self.HORARIO_FK3" FromRole="MATERIA" ToRole="HORARIO" />
+        </EntityType>
+        <EntityType Name="PROFESOR">
+          <Key>
+            <PropertyRef Name="ID_PROFESOR" />
+          </Key>
+          <Property Name="ID_PROFESOR" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="NOMBRE1" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="NOMBRE2" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="APELLIDO1" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="APELLIDO2" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CALLE" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="NO_EXTERIOR" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="NO_INTERIOR" Nullable="true" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="LADA" Nullable="false" Type="Int32" />
+          <Property Name="TELEFONO" Nullable="false" Type="Int64" />
+          <Property Name="FECHA_NACIMIENTO" Nullable="false" Type="DateTime" />
+          <Property Name="RFC" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="HORAS_SEMANALES" Type="Int32" />
+          <Property Name="FIRMA" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <NavigationProperty Name="HORARIO" Relationship="Self.HORARIO_FK4" FromRole="PROFESOR" ToRole="HORARIO" />
+        </EntityType>
+        <EntityType Name="REGISTRO_ASISTENCIA">
+          <Key>
+            <PropertyRef Name="ID_REGISTRO_ASISTENCIA" />
+          </Key>
+          <Property Name="ID_REGISTRO_ASISTENCIA" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="ID_HORARIO" Nullable="false" Type="Int64" />
+          <Property Name="FECHA" Nullable="false" Type="DateTime" />
+          <Property Name="HORA" Nullable="false" Precision="6" Type="DateTime" />
+          <NavigationProperty Name="HORARIO" Relationship="Self.REGISTRO_ASISTENCIA_FK" FromRole="REGISTRO_ASISTENCIA" ToRole="HORARIO" />
+          <NavigationProperty Name="RETARDO" Relationship="Self.RETARDO_FK" FromRole="REGISTRO_ASISTENCIA" ToRole="RETARDO" />
+        </EntityType>
+        <EntityType Name="RETARDO">
+          <Key>
+            <PropertyRef Name="ID_RETARDO" />
+          </Key>
+          <Property Name="ID_RETARDO" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="ID_REGISTRO_ASISTENCIA" Nullable="false" Type="Int64" />
+          <Property Name="DURACION" Nullable="false" Precision="38" Scale="0" Type="Decimal" />
+          <NavigationProperty Name="REGISTRO_ASISTENCIA" Relationship="Self.RETARDO_FK" FromRole="RETARDO" ToRole="REGISTRO_ASISTENCIA" />
+        </EntityType>
+        <Association Name="HORARIO_FK2">
+          <End Type="Self.GRUPO" Multiplicity="1" Role="GRUPO" />
+          <End Type="Self.HORARIO" Multiplicity="*" Role="HORARIO" />
+          <ReferentialConstraint>
+            <Principal Role="GRUPO">
+              <PropertyRef Name="ID_GRUPO" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="ID_GRUPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HORARIO_FK">
+          <End Type="Self.HORA_CLASE" Multiplicity="1" Role="HORA_CLASE" />
+          <End Type="Self.HORARIO" Multiplicity="*" Role="HORARIO" />
+          <ReferentialConstraint>
+            <Principal Role="HORA_CLASE">
+              <PropertyRef Name="ID_HORA_CLASE" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="ID_HORA_CLASE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HORARIO_FK3">
+          <End Type="Self.MATERIA" Multiplicity="1" Role="MATERIA" />
+          <End Type="Self.HORARIO" Multiplicity="*" Role="HORARIO" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIA">
+              <PropertyRef Name="ID_MATERIA" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="ID_MATERIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HORARIO_FK4">
+          <End Type="Self.PROFESOR" Multiplicity="1" Role="PROFESOR" />
+          <End Type="Self.HORARIO" Multiplicity="*" Role="HORARIO" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESOR">
+              <PropertyRef Name="ID_PROFESOR" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="ID_PROFESOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGISTRO_ASISTENCIA_FK">
+          <End Type="Self.HORARIO" Multiplicity="1" Role="HORARIO" />
+          <End Type="Self.REGISTRO_ASISTENCIA" Multiplicity="*" Role="REGISTRO_ASISTENCIA" />
+          <ReferentialConstraint>
+            <Principal Role="HORARIO">
+              <PropertyRef Name="ID_HORARIO" />
+            </Principal>
+            <Dependent Role="REGISTRO_ASISTENCIA">
+              <PropertyRef Name="ID_HORARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RETARDO_FK">
+          <End Type="Self.REGISTRO_ASISTENCIA" Multiplicity="1" Role="REGISTRO_ASISTENCIA" />
+          <End Type="Self.RETARDO" Multiplicity="*" Role="RETARDO" />
+          <ReferentialConstraint>
+            <Principal Role="REGISTRO_ASISTENCIA">
+              <PropertyRef Name="ID_REGISTRO_ASISTENCIA" />
+            </Principal>
+            <Dependent Role="RETARDO">
+              <PropertyRef Name="ID_REGISTRO_ASISTENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ChecadorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GRUPO" EntityType="Self.GRUPO" />
+          <EntitySet Name="HORA_CLASE" EntityType="Self.HORA_CLASE" />
+          <EntitySet Name="HORARIO" EntityType="Self.HORARIO" />
+          <EntitySet Name="MATERIA" EntityType="Self.MATERIA" />
+          <EntitySet Name="PROFESOR" EntityType="Self.PROFESOR" />
+          <EntitySet Name="REGISTRO_ASISTENCIA" EntityType="Self.REGISTRO_ASISTENCIA" />
+          <EntitySet Name="RETARDO" EntityType="Self.RETARDO" />
+          <AssociationSet Name="HORARIO_FK2" Association="Self.HORARIO_FK2">
+            <End EntitySet="GRUPO" Role="GRUPO" />
+            <End EntitySet="HORARIO" Role="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="HORARIO_FK" Association="Self.HORARIO_FK">
+            <End EntitySet="HORA_CLASE" Role="HORA_CLASE" />
+            <End EntitySet="HORARIO" Role="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="HORARIO_FK3" Association="Self.HORARIO_FK3">
+            <End EntitySet="MATERIA" Role="MATERIA" />
+            <End EntitySet="HORARIO" Role="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="HORARIO_FK4" Association="Self.HORARIO_FK4">
+            <End EntitySet="PROFESOR" Role="PROFESOR" />
+            <End EntitySet="HORARIO" Role="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="REGISTRO_ASISTENCIA_FK" Association="Self.REGISTRO_ASISTENCIA_FK">
+            <End EntitySet="HORARIO" Role="HORARIO" />
+            <End EntitySet="REGISTRO_ASISTENCIA" Role="REGISTRO_ASISTENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="RETARDO_FK" Association="Self.RETARDO_FK">
+            <End EntitySet="REGISTRO_ASISTENCIA" Role="REGISTRO_ASISTENCIA" />
+            <End EntitySet="RETARDO" Role="RETARDO" />
+          </AssociationSet>
+          <FunctionImport Name="CALCULOINSERCIONRETARDO">
+            <Parameter Name="P_IDHORARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_IDREGISTROASISTENCIA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_HORA" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CALCULOPAGO">
+            <Parameter Name="P_IDPROFESOR" Mode="In" Type="Decimal" />
+            <Parameter Name="P_IDPAGO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHAINICIO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_FECHAFIN" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="DECHORASPROFESOR">
+            <Parameter Name="P_IDPROFESOR" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DIASSEMANA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INCDECHORASPROFESOR">
+            <Parameter Name="P_IDPROFESOR" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DSEMANANEW" Mode="In" Type="String" />
+            <Parameter Name="P_DSEMANAANT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INCREMENTOHORASPROFESOR">
+            <Parameter Name="P_IDPROFESOR" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DIASSEMANA" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ChecadorModelStoreContainer" CdmEntityContainer="ChecadorEntities">
+          <EntitySetMapping Name="GRUPO">
+            <EntityTypeMapping TypeName="ChecadorModel.GRUPO">
+              <MappingFragment StoreEntitySet="GRUPO">
+                <ScalarProperty Name="ID_GRUPO" ColumnName="ID_GRUPO" />
+                <ScalarProperty Name="CICLO_ESCOLAR" ColumnName="CICLO_ESCOLAR" />
+                <ScalarProperty Name="SEMESTRE" ColumnName="SEMESTRE" />
+                <ScalarProperty Name="GRUPO1" ColumnName="GRUPO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HORA_CLASE">
+            <EntityTypeMapping TypeName="ChecadorModel.HORA_CLASE">
+              <MappingFragment StoreEntitySet="HORA_CLASE">
+                <ScalarProperty Name="ID_HORA_CLASE" ColumnName="ID_HORA_CLASE" />
+                <ScalarProperty Name="HORA_INICIO" ColumnName="HORA_INICIO" />
+                <ScalarProperty Name="HORA_FIN" ColumnName="HORA_FIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HORARIO">
+            <EntityTypeMapping TypeName="ChecadorModel.HORARIO">
+              <MappingFragment StoreEntitySet="HORARIO">
+                <ScalarProperty Name="ID_HORARIO" ColumnName="ID_HORARIO" />
+                <ScalarProperty Name="ID_HORA_CLASE" ColumnName="ID_HORA_CLASE" />
+                <ScalarProperty Name="ID_GRUPO" ColumnName="ID_GRUPO" />
+                <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+                <ScalarProperty Name="ID_PROFESOR" ColumnName="ID_PROFESOR" />
+                <ScalarProperty Name="DIA_SEMANA" ColumnName="DIA_SEMANA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATERIA">
+            <EntityTypeMapping TypeName="ChecadorModel.MATERIA">
+              <MappingFragment StoreEntitySet="MATERIA">
+                <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="NUM_HORAS_CLASE" ColumnName="NUM_HORAS_CLASE" />
+                <ScalarProperty Name="SEMESTRE" ColumnName="SEMESTRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROFESOR">
+            <EntityTypeMapping TypeName="ChecadorModel.PROFESOR">
+              <MappingFragment StoreEntitySet="PROFESOR">
+                <ScalarProperty Name="ID_PROFESOR" ColumnName="ID_PROFESOR" />
+                <ScalarProperty Name="NOMBRE1" ColumnName="NOMBRE1" />
+                <ScalarProperty Name="NOMBRE2" ColumnName="NOMBRE2" />
+                <ScalarProperty Name="APELLIDO1" ColumnName="APELLIDO1" />
+                <ScalarProperty Name="APELLIDO2" ColumnName="APELLIDO2" />
+                <ScalarProperty Name="CALLE" ColumnName="CALLE" />
+                <ScalarProperty Name="NO_EXTERIOR" ColumnName="NO_EXTERIOR" />
+                <ScalarProperty Name="NO_INTERIOR" ColumnName="NO_INTERIOR" />
+                <ScalarProperty Name="LADA" ColumnName="LADA" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="HORAS_SEMANALES" ColumnName="HORAS_SEMANALES" />
+                <ScalarProperty Name="FIRMA" ColumnName="FIRMA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGISTRO_ASISTENCIA">
+            <EntityTypeMapping TypeName="ChecadorModel.REGISTRO_ASISTENCIA">
+              <MappingFragment StoreEntitySet="REGISTRO_ASISTENCIA">
+                <ScalarProperty Name="ID_REGISTRO_ASISTENCIA" ColumnName="ID_REGISTRO_ASISTENCIA" />
+                <ScalarProperty Name="ID_HORARIO" ColumnName="ID_HORARIO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="HORA" ColumnName="HORA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RETARDO">
+            <EntityTypeMapping TypeName="ChecadorModel.RETARDO">
+              <MappingFragment StoreEntitySet="RETARDO">
+                <ScalarProperty Name="ID_RETARDO" ColumnName="ID_RETARDO" />
+                <ScalarProperty Name="ID_REGISTRO_ASISTENCIA" ColumnName="ID_REGISTRO_ASISTENCIA" />
+                <ScalarProperty Name="DURACION" ColumnName="DURACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CALCULOINSERCIONRETARDO" FunctionName="ChecadorModel.Store.CALCULOINSERCIONRETARDO" />
+          <FunctionImportMapping FunctionImportName="CALCULOPAGO" FunctionName="ChecadorModel.Store.CALCULOPAGO" />
+          <FunctionImportMapping FunctionImportName="DECHORASPROFESOR" FunctionName="ChecadorModel.Store.DECHORASPROFESOR" />
+          <FunctionImportMapping FunctionImportName="INCDECHORASPROFESOR" FunctionName="ChecadorModel.Store.INCDECHORASPROFESOR" />
+          <FunctionImportMapping FunctionImportName="INCREMENTOHORASPROFESOR" FunctionName="ChecadorModel.Store.INCREMENTOHORASPROFESOR" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

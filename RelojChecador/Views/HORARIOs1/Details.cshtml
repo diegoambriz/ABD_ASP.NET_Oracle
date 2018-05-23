@@ -1,0 +1,58 @@
+﻿@model RelojChecador.Models.HORARIO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HORARIO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DIA_SEMANA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIA_SEMANA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GRUPO.CICLO_ESCOLAR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GRUPO.CICLO_ESCOLAR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HORA_CLASE.ID_HORA_CLASE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HORA_CLASE.ID_HORA_CLASE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MATERIA.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATERIA.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROFESOR.NOMBRE1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROFESOR.NOMBRE1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_HORARIO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

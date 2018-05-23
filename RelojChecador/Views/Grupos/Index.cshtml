@@ -1,0 +1,62 @@
+﻿@model IEnumerable<RelojChecador.Models.GRUPO>
+
+@{
+    ViewBag.Title = "Administración de Grupos";
+}
+
+<h2>Administración de Grupos</h2>
+
+<!--<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>-->
+<a href="@Url.Action("Create", "Grupos")" class="btn btn-success">
+    Crear Nuevo
+    <span class="glyphicon glyphicon-plus"></span>
+</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CICLO_ESCOLAR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEMESTRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GRUPO1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CICLO_ESCOLAR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEMESTRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GRUPO1)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Grupos", new { id=item.ID_GRUPO })" class="btn btn-warning btn-xs">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <a href="@Url.Action("Details", "Grupos", new { id=item.ID_GRUPO })" class="btn btn-info btn-xs">
+                <span class="glyphicon glyphicon-th-list"></span>
+            </a>
+            <a href="@Url.Action("Delete", "Grupos", new { id = item.ID_GRUPO})" class="btn btn-danger btn-xs">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+            @*@Html.ActionLink("Editar", "Edit", new { id=item.ID_GRUPO }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_GRUPO }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.ID_GRUPO })*@
+        </td>
+    </tr>
+}
+
+</table>
+<a href="@Url.Action("Index", "Administracion")" class="btn btn-default">
+    <span class="glyphicon glyphicon-hand-left" aria_hidden="true"></span>
+    Administración
+</a>

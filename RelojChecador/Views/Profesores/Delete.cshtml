@@ -1,0 +1,119 @@
+﻿@model RelojChecador.Models.PROFESOR
+
+@{
+    ViewBag.Title = "Borrar";
+}
+
+<h2>Borrar</h2>
+
+<h3>¿Está seguro que desea borrar al profesor?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDO1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDO1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDO2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDO2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CALLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CALLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NO_EXTERIOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NO_EXTERIOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NO_INTERIOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NO_INTERIOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LADA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LADA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_NACIMIENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_NACIMIENTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RFC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RFC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FIRMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FIRMA)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar al listado", "Index")
+        </div>
+    }
+</div>

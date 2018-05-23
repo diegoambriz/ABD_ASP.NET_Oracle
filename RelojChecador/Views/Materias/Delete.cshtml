@@ -1,0 +1,47 @@
+﻿@model RelojChecador.Models.MATERIA
+
+@{
+    ViewBag.Title = "Borrar";
+}
+
+<h2>Borrar</h2>
+
+<h3>¿Está seguro que desea borrar la materia?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NUM_HORAS_CLASE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NUM_HORAS_CLASE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEMESTRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEMESTRE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar al listado", "Index")
+        </div>
+    }
+</div>

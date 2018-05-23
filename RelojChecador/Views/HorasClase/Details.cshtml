@@ -1,0 +1,34 @@
+﻿@model RelojChecador.Models.HORA_CLASE
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>HORAS-CLASE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HORA_INICIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HORA_INICIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HORA_FIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HORA_FIN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_HORA_CLASE }) |
+    @Html.ActionLink("Regresar al listado", "Index")
+</p>
